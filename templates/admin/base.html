@@ -1,0 +1,115 @@
+{% extends "admin/base.html" %}}
+{% load static %}
+
+{% block title %} iAudio App {% endblock %}
+
+{% block extrastyle %}
+
+<script src="{% static 'jquery-3.2.1.min.js' %}"></script>
+<!-- <script type="text/javascript">
+  $(document).ready(
+    function(){
+        $(document).on('click','.food-quantity',function(){
+        var x=$(".chapter");
+        // x[0].play();
+        alert(x.length);
+       x[0].onpause=function(){
+            alert("hiii");
+
+        };
+
+        // var elements = $('input[type=audio/mpeg]');
+      
+    })
+
+</script> -->
+
+<script type="text/javascript">
+  function getcheck(obj){
+    var play = document.getElementsByClassName('play');
+    if (obj.getAttribute( "class", "play") == 'play')
+    {
+        obj.play();
+    } 
+    else
+    {
+        for (i = 0; i < play.length; i++)
+        {
+            play[i].pause();
+            play[i].setAttribute( "class", "");
+
+        }
+        obj.setAttribute( "class", "play");
+    }
+}
+    
+</script>
+
+<style>
+@media only screen and (max-width: 993px) {
+.content {flex-direction: column;}
+.left-panel {order: 2;}
+.right-panel {display: block;order: 1;margin-bottom: 2rem;}
+.brand-logo {font-weight: 100;font-size: 1.5rem!important;}
+
+}
+@media #{$medium-and-down} {
+show-on-medium;
+show-on-small;
+}
+
+.app-list{
+column-count:1;
+
+}
+
+.row {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+}
+.related-widget-wrapper-link.change-related{
+    display:none;
+}
+.related-widget-wrapper-link.add-related{
+    display:none;
+}
+.input-field-action{
+	display:none;
+}
+
+[data-form-control~=date-today-shortcut]
+    {
+        display: none;
+    }
+
+body  main  form.content  div.right-panel  div.card.filters-card  div.card-content  div.row  div  label{
+font-size: 0.9rem;
+}
+
+#id_action_container  div  input {
+
+
+font-size: 0.75rem;
+
+}
+#id_content_container > label{
+display:None;
+}
+
+</style>
+
+{% endblock %}
+
+   {% block sidenav_header %}
+                <li>
+                    <div class="userView">
+                        <img class="background" src="{% static 'material/imgs/sidenav.svg' %}">
+                        {% block userphoto %}
+                        <a><img class="circle" src="/static/image/logo.png" ></a>
+                        {% endblock %}
+                        <a><span class="white-text name">{{ request.user.get_username|title }}</span></a>
+                        <a><span class="white-text email">{{ request.user.email }}</span></a>
+                    </div>
+                </li>
+                {% endblock %}

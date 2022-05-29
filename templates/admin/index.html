@@ -1,0 +1,73 @@
+{% extends "admin/index.html"%}
+
+{% load i18n %}
+
+{% block extrahead %}
+    {{ block.super }}
+    
+    <style type="text/css">
+        .chart_title {
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .app-list {
+            column-count: 1;
+            padding: 0 px;;
+        }
+
+
+    </style>
+{% endblock %}
+
+{% block content %}
+{% if not user.is_superuser %}
+    <div id="content-main" style="width: 100%;">
+        <div class="row" style="padding:5px;">
+            <div class="col s12 m12 l4">
+                <!-- #0359a3 -->
+                <div style="padding:50px 5px;background: #0c68b7;border-radius: 5px">
+                    <div style="color: white;text-align: center;">Total Number of Employees: {{ total }}</div>
+                </div>
+            </div>
+            <div class="col s12 m12 l4">
+                <div style="padding:50px 5px;background: #0c68b7;border-radius: 5px">
+                    <div style="color: white;text-align: center;">Total Number of Active Employees: {{ active }}</div>
+                </div>
+            </div>
+            <div class="col s12 m12 l4">
+                <div style="padding:50px 5px;background:#0c68b7;border-radius: 5px">
+                    <div style="color: white;text-align: center;">Total Number of Purchased Lessons : {{lessons}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="chart_title row" style="width: 100%;padding: 5px">
+        </div>
+{% endif %}
+
+
+{% if user.is_superuser %}
+    <div id="content-main" style="width: 100%;">
+        <div class="row" style="padding:5px;">
+            <div class="col s12 m12 l4">
+                <!-- #0359a3 -->
+                <div style="padding:50px 5px;background: #0c68b7;border-radius: 5px">
+                    <div style="color: white;text-align: center;">Total Number of Companies: {{ companies }}</div>
+                </div>
+            </div>
+            <div class="col s12 m12 l4">
+                <div style="padding:50px 5px;background: #0c68b7;border-radius: 5px">
+                    <div style="color: white;text-align: center;">Total Number of Subscribed Companies: {{ subscribed }}</div>
+                </div>
+            </div>
+            <div class="col s12 m12 l4">
+                <div style="padding:50px 5px;background:#0c68b7;border-radius: 5px">
+                    <div style="color: white;text-align: center;">Total Number of Lessons : {{lessons}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="chart_title row" style="width: 100%;padding: 5px">
+        </div>
+{% endif %}
+    {{ block.super }}
+    </div>
+{% endblock %}
